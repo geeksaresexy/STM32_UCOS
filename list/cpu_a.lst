@@ -1,0 +1,153 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;*******************************************************
+                       *************************************************
+    2 00000000         ;                                               uC/CPU
+    3 00000000         ;                                    CPU CONFIGURATION &
+                        PORT LAYER
+    4 00000000         ;
+    5 00000000         ;                          (c) Copyright 2004-2008; Micr
+                       ium, Inc.; Weston, FL
+    6 00000000         ;
+    7 00000000         ;               All rights reserved.  Protected by inter
+                       national copyright laws.
+    8 00000000         ;
+    9 00000000         ;               uC/CPU is provided in source form for FR
+                       EE evaluation, for educational
+   10 00000000         ;               use or peaceful research.  If you plan o
+                       n using uC/CPU in a commercial
+   11 00000000         ;               product you need to contact Micrium to p
+                       roperly license its use in your
+   12 00000000         ;               product.  We provide ALL the source code
+                        for your convenience and to
+   13 00000000         ;               help you experience uC/CPU.  The fact th
+                       at the source code is provided
+   14 00000000         ;               does NOT mean that you can use it withou
+                       t paying a licensing fee.
+   15 00000000         ;
+   16 00000000         ;               Knowledge of the source code may NOT be 
+                       used to develop a similar product.
+   17 00000000         ;
+   18 00000000         ;               Please help us continue to provide the E
+                       mbedded community with the finest
+   19 00000000         ;               software available.  Your honesty is gre
+                       atly appreciated.
+   20 00000000         ;*******************************************************
+                       *************************************************
+   21 00000000         
+   22 00000000         
+   23 00000000         ;*******************************************************
+                       *************************************************
+   24 00000000         ;
+   25 00000000         ;                                            CPU PORT FI
+                       LE
+   26 00000000         ;
+   27 00000000         ;                                            ARM-Cortex-
+                       M3
+   28 00000000         ;                                            IAR C Compi
+                       ler
+   29 00000000         ;
+   30 00000000         ; Filename      : cpu_a.asm
+   31 00000000         ; Version       : V1.20
+   32 00000000         ; Programmer(s) : JJL
+   33 00000000         ;*******************************************************
+                       *************************************************
+   34 00000000         
+   35 00000000         
+   36 00000000         ;*******************************************************
+                       *************************************************
+   37 00000000         ;                                           PUBLIC FUNCT
+                       IONS
+   38 00000000         ;*******************************************************
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                       *************************************************
+   39 00000000         
+   40 00000000                 EXPORT           IntDisAll
+   41 00000000                 EXPORT           IntEnAll
+   42 00000000         
+   43 00000000         
+   44 00000000         
+   45 00000000         
+   46 00000000         ;*******************************************************
+                       *************************************************
+   47 00000000         ;                                      CODE GENERATION D
+                       IRECTIVES
+   48 00000000         ;*******************************************************
+                       *************************************************
+   49 00000000         
+   50 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+   51 00000000                 THUMB
+   52 00000000                 REQUIRE8
+   53 00000000                 PRESERVE8
+   54 00000000         
+   55 00000000         ;$PAGE
+   56 00000000         ;*******************************************************
+                       *************************************************
+   57 00000000         ;                                    DISABLE and ENABLE 
+                       INTERRUPTS
+   58 00000000         ;
+   59 00000000         ; Description: Disable/Enable interrupts.
+   60 00000000         ;
+   61 00000000         ; Prototypes : void  CPU_IntDis(void);
+   62 00000000         ;              void  CPU_IntEn (void);
+   63 00000000         ;*******************************************************
+                       *************************************************
+   64 00000000         
+   65 00000000         IntDisAll
+   66 00000000 B672            CPSID            I
+   67 00000002 4770            BX               LR
+   68 00000004         
+   69 00000004         
+   70 00000004         IntEnAll
+   71 00000004 B662            CPSIE            I
+   72 00000006 4770            BX               LR
+   73 00000008         
+   74 00000008         
+   75 00000008         
+   76 00000008                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\obj\cp
+u_a.d -o.\obj\cpu_a.o -I"D:\Program Files\keil\ARM\RV31\INC" -I"D:\Program File
+s\keil\ARM\CMSIS\Include" -I"D:\Program Files\keil\ARM\Inc\ST\STM32F10x" --pred
+efine="__MICROLIB SETA 1" --list=.\list\cpu_a.lst ucos\uC-CPU\cpu_a.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 50 in file ucos\uC-CPU\cpu_a.asm
+   Uses
+      None
+Comment: .text unused
+IntDisAll 00000000
+
+Symbol: IntDisAll
+   Definitions
+      At line 65 in file ucos\uC-CPU\cpu_a.asm
+   Uses
+      At line 40 in file ucos\uC-CPU\cpu_a.asm
+Comment: IntDisAll used once
+IntEnAll 00000004
+
+Symbol: IntEnAll
+   Definitions
+      At line 70 in file ucos\uC-CPU\cpu_a.asm
+   Uses
+      At line 41 in file ucos\uC-CPU\cpu_a.asm
+Comment: IntEnAll used once
+3 symbols
+334 symbols in table
